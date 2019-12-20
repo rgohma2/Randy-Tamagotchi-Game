@@ -29,6 +29,7 @@ const game = {
 	startTimer() {
 			const mainTimerId = setInterval(() => {
 			this.timer++
+			this.showStatus()
 			console.log(this.timer);
 			this.updateTamagotchi()
 			console.log(this.newTama);
@@ -67,14 +68,23 @@ const game = {
 		clearInterval(this.timerId)
 	},
 	feedTama() {
-		this.hunger--
-		console.log(this.hunger);
+		if (this.hunger >= 1)
+			this.hunger--
+			console.log(this.hunger);
 	},
 	playWithTama() {
-		this.bordom -= 2
+		if (this.bordom >= 2)
+			this.bordom -= 2
 	},
 	putTamaToSleep(){
-		this.sleepiness = 0
+		if (this.sleepiness >= 5)
+			this.sleepiness -= 5
+	},
+	showStatus() {
+		$('#age').text(this.age)
+		$('#hunger').text(this.hunger)
+		$('#bordom').text(this.bordom)
+		$('#sleepiness').text(this.sleepiness)
 	}
 }
 
@@ -88,7 +98,7 @@ $('#play').on('click', () => {
 })
 
 $('#sleep').on('click', () => {
-	game.playWithTama()
+	game.putTamaToSleep()
 })
 
 
