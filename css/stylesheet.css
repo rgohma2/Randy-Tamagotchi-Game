@@ -218,12 +218,15 @@ form p {
 	position: absolute;
 	left: 770px;
 	top: 100px;
-	width: 200px;
-	height: 32px;
 	font-size: 70px;
 }
 
-
+.notSleepy {
+	font-size: 20px;
+	position: absolute;
+	left: 400px;
+	top: 500px;
+}
 
 
 

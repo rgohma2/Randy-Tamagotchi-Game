@@ -66,7 +66,7 @@ const game = {
 		if (this.hunger == 10){
 			$('.duck').addClass('dead')
 	    	$('body').append('<p>').css({
-	    	'color' : '',
+	    	'color' : 'crimson',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
@@ -77,7 +77,7 @@ const game = {
 	    } else if (this.sleepiness == 10) {
 	    	$('.duck').addClass('dead')
 	    	 $('body').append('<p>').css({
-	    	'color' : 'red',
+	    	'color' : 'crimson',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
@@ -88,7 +88,7 @@ const game = {
 	    } else if (this.boredom == 10) {
 	    	$('.duck').addClass('dead')
 	    	$('body').append('<p>').css({
-	    	'color' : 'red',
+	    	'color' : 'crimson',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
@@ -125,7 +125,8 @@ const game = {
 		$('.duck').addClass('duck3')
 		this.turnLightsOff()
 		} else {
-			$('form').append('<p>').text(`${this.name} is not tired right now.`)
+			$('.notSleepy').show()
+			$('.notSleepy').text(`${this.name} is not tired right now.`)
 		}
 	},
 	showStatus() {
@@ -136,6 +137,7 @@ const game = {
 	},
 	turnLightsOff() {
 		this.changeLight = true
+		$('.notSleepy').hide()
 		$('body').removeClass('lightson')
 		$('body').addClass('lightsoff')
 
