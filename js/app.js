@@ -54,13 +54,34 @@ const game = {
 	},	
 	showDead() {
 		if (this.hunger == 10){
-	    	alert(`${this.name} died of starvation!`)
+			$('.duck').addClass('dead')
+	    	$('body').append('<p>').css({
+			'margin': '0 auto',
+			'font-size': '50px',
+			'border': '1px solid black',
+			'padding': '40px',
+			'text-align': 'center'
+			}).text(`${this.name} died of starvation!`)
 	    	this.stopGame()
 	    } else if (this.sleepiness == 10) {
-	    	alert(`${this.name} got too tired and died!`)
+	    	$('.duck').addClass('dead')
+	    	 $('body').append('<p>').css({
+			'margin': '0 auto',
+			'font-size': '50px',
+			'border': '1px solid black',
+			'padding': '40px',
+			'text-align': 'center'
+			}).text(`${this.name} got too tired and died!`)
 	    	this.stopGame()
 	    } else if (this.boredom == 10) {
-	    	alert(`${this.name} died of bordom!`)
+	    	$('.duck').addClass('dead')
+	    	$('body').append('<p>').css({
+			'margin': '0 auto',
+			'font-size': '50px',
+			'border': '1px solid black',
+			'padding': '40px',
+			'text-align': 'center'
+			}).text(`${this.name} died of boredom!`)
 	    	this.stopGame()
 	    }
 	},
@@ -74,6 +95,10 @@ const game = {
 			$('.beak').addClass('beak2')
 			$('.duck').removeClass('duck2')
 			$('.duck').removeClass('duck3')
+			$('body').css({
+			'background-image': "url('https://images.clipartlogo.com/files/istock/previews/9005/90055005-panorama-of-green-field-with-cloudy-sky-background.jpg')", 
+			'background-size' : 'cover'
+		})
 
 	},
 	playWithTama() {
@@ -82,6 +107,10 @@ const game = {
 			$('.duck').addClass('duck2')
 			$('.beak').removeClass('beak2')
 			$('.duck').removeClass('duck3')
+			$('body').css({
+			'background-image': "url('https://images.clipartlogo.com/files/istock/previews/9005/90055005-panorama-of-green-field-with-cloudy-sky-background.jpg')", 
+			'background-size' : 'cover'
+		})
 
 
 	},
@@ -91,6 +120,7 @@ const game = {
 		$('.beak').removeClass('beak2')
 		$('.duck').removeClass('duck2')
 		$('.duck').addClass('duck3')
+		$('body').css('background', 'black')
 
 	},
 	showStatus() {
@@ -112,11 +142,6 @@ $('#play').on('click', () => {
 
 $('#sleep').on('click', () => {
 	game.putTamaToSleep()
-	// $('body').append($('div').css({
-	// 		'background-color': 'black',
-	// 		'width': '10px',
-	// 		'height': '10px'
-	// 	})).fadeIn('slow')
 })
 
 
@@ -128,7 +153,7 @@ $('#sleep').on('click', () => {
 
 
 
-// game.startTimer()
+game.startTimer()
 
 
 

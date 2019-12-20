@@ -128,7 +128,7 @@ ul {
     position: relative;
     bottom: 40px;
     left: -60px;
-    animation: eat 1s linear 0s 5;
+    animation: eat 1s linear 0s infinite
 }
 
 .duck2 {
@@ -140,7 +140,7 @@ ul {
 	position: absolute;
 	bottom: 350px;
 	right: 280px;
-	animation: jumpbody 2s linear 0s 5
+	animation: jumpbody 2s ease 0s infinite
 }
 
 .duck3 {
@@ -152,7 +152,11 @@ ul {
 	position: absolute;
 	bottom: 350px;
 	right: 280px;
-	animation: sleep 2s linear 0s 3
+	animation: sleep 2s linear 0s infinite
+}
+
+.dead {
+	position: relative;
 }
 
 
@@ -178,6 +182,14 @@ ul {
     0% {bottom: 0px;right: 0px}
     50% {bottom: 10px;right: 10px}
     100% {bottom: 0px;right: 0px}
+}
+
+
+p {
+	margin: 0 auto;
+	font-size: 50px;
+	border: 1px solid black;
+	padding: 40px;
 }
 
 
