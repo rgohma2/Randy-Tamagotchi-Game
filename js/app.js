@@ -1,11 +1,11 @@
 console.log('tamagotchi');
 
 class Tamagotchi {
-	constructor(name, hunger, sleepiness, bordom, age) {
+	constructor(name, hunger, sleepiness, boredom, age) {
 		this.name = name
 		this.hunger = hunger
 		this.sleepiness = sleepiness
-		this.bordom = bordom
+		this.boredom = boredom
 		this.age = age
 	}
 }
@@ -19,11 +19,11 @@ const game = {
 	name: 'jim',
 	hunger: 0,
 	sleepiness: 0,
-	bordom: 0,
+	boredom: 0,
 	age: 0,
 	newTama: 0, 	
 	updateTamagotchi() {
-	const newTamagotchi = new Tamagotchi(this.name, this.hunger, this.sleepiness, this.bordom, this.age)
+	const newTamagotchi = new Tamagotchi(this.name, this.hunger, this.sleepiness, this.boredom, this.age)
 	this.newTama = newTamagotchi
 	},
 	startTimer() {
@@ -42,7 +42,7 @@ const game = {
 	      		this.showDead()
 	      	} 
 	      	if (this.timer % 2 === 0){
-	      		this.bordom++
+	      		this.boredom++
 	      		this.showDead()
 	      	}
 	      	if (this.timer % 5 === 0){
@@ -54,13 +54,13 @@ const game = {
 	},	
 	showDead() {
 		if (this.hunger == 10){
-	    	alert(`${this.name} died!`)
+	    	alert(`${this.name} died of starvation!`)
 	    	this.stopGame()
 	    } else if (this.sleepiness == 10) {
-	    	alert(`${this.name} died!`)
+	    	alert(`${this.name} got too tired and died!`)
 	    	this.stopGame()
-	    } else if (this.bordom == 10) {
-	    	alert(`${this.name} died!`)
+	    } else if (this.boredom == 10) {
+	    	alert(`${this.name} died of bordom!`)
 	    	this.stopGame()
 	    }
 	},
@@ -71,21 +71,34 @@ const game = {
 		if (this.hunger >= 1)
 			this.hunger--
 			console.log(this.hunger);
+			$('.beak').addClass('beak2')
+			$('.duck').removeClass('duck2')
+			$('.duck').removeClass('duck3')
+
 	},
 	playWithTama() {
-		if (this.bordom >= 2)
-			this.bordom -= 2
+		if (this.boredom >= 1)
+			this.boredom -= 1
+			$('.duck').addClass('duck2')
+			$('.beak').removeClass('beak2')
+			$('.duck').removeClass('duck3')
+
+
 	},
 	putTamaToSleep(){
 		if (this.sleepiness >= 5)
 			this.sleepiness -= 5
+		$('.beak').removeClass('beak2')
+		$('.duck').removeClass('duck2')
+		$('.duck').addClass('duck3')
+
 	},
 	showStatus() {
 		$('#age').text(this.age)
 		$('#hunger').text(this.hunger)
-		$('#bordom').text(this.bordom)
+		$('#boredom').text(this.boredom)
 		$('#sleepiness').text(this.sleepiness)
-	}
+	},
 }
 
 
@@ -99,6 +112,11 @@ $('#play').on('click', () => {
 
 $('#sleep').on('click', () => {
 	game.putTamaToSleep()
+	// $('body').append($('div').css({
+	// 		'background-color': 'black',
+	// 		'width': '10px',
+	// 		'height': '10px'
+	// 	})).fadeIn('slow')
 })
 
 
@@ -109,8 +127,8 @@ $('#sleep').on('click', () => {
 
 
 
-game.updateTamagotchi()
-game.startTimer()
+
+// game.startTimer()
 
 
 
