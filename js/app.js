@@ -7,16 +7,18 @@ class Tamagotchi {
 		this.sleepiness = sleepiness
 		this.boredom = boredom
 		this.age = age
+
 	}
 }
 
 
 
 const game = {
-
+	lights: 0,
+	changeLight: false,
 	timer: 0,
 	timerId: 0,
-	name: 'jim',
+	name: '',
 	hunger: 0,
 	sleepiness: 0,
 	boredom: 0,
@@ -30,9 +32,17 @@ const game = {
 			const mainTimerId = setInterval(() => {
 			this.timer++
 			this.showStatus()
-			console.log(this.timer);
+			// console.log(this.timer);
 			this.updateTamagotchi()
-			console.log(this.newTama);
+			// console.log(this.newTama);
+			if (this.changeLight === true){
+				this.lights++
+				if (this.lights > 4) {
+					this.turnLightsOn()
+					this.lights = 0
+				}
+			}
+
 	      	if (this.timer % 2 === 0) {
 	      		this.hunger++
 	      		this.showDead()
@@ -56,6 +66,7 @@ const game = {
 		if (this.hunger == 10){
 			$('.duck').addClass('dead')
 	    	$('body').append('<p>').css({
+	    	'color' : '',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
@@ -66,6 +77,7 @@ const game = {
 	    } else if (this.sleepiness == 10) {
 	    	$('.duck').addClass('dead')
 	    	 $('body').append('<p>').css({
+	    	'color' : 'red',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
@@ -76,6 +88,7 @@ const game = {
 	    } else if (this.boredom == 10) {
 	    	$('.duck').addClass('dead')
 	    	$('body').append('<p>').css({
+	    	'color' : 'red',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
@@ -94,11 +107,6 @@ const game = {
 			console.log(this.hunger);
 			$('.beak').addClass('beak2')
 			$('.duck').removeClass('duck2')
-			$('.duck').removeClass('duck3')
-			$('body').css({
-			'background-image': "url('https://images.clipartlogo.com/files/istock/previews/9005/90055005-panorama-of-green-field-with-cloudy-sky-background.jpg')", 
-			'background-size' : 'cover'
-		})
 
 	},
 	playWithTama() {
@@ -106,22 +114,19 @@ const game = {
 			this.boredom -= 1
 			$('.duck').addClass('duck2')
 			$('.beak').removeClass('beak2')
-			$('.duck').removeClass('duck3')
-			$('body').css({
-			'background-image': "url('https://images.clipartlogo.com/files/istock/previews/9005/90055005-panorama-of-green-field-with-cloudy-sky-background.jpg')", 
-			'background-size' : 'cover'
-		})
 
 
 	},
 	putTamaToSleep(){
-		if (this.sleepiness >= 5)
+		if (this.sleepiness >= 5) {
 			this.sleepiness -= 5
 		$('.beak').removeClass('beak2')
 		$('.duck').removeClass('duck2')
 		$('.duck').addClass('duck3')
-		$('body').css('background', 'black')
-
+		this.turnLightsOff()
+		} else {
+			$('form').append('<p>').text(`${this.name} is not tired right now.`)
+		}
 	},
 	showStatus() {
 		$('#age').text(this.age)
@@ -129,6 +134,17 @@ const game = {
 		$('#boredom').text(this.boredom)
 		$('#sleepiness').text(this.sleepiness)
 	},
+	turnLightsOff() {
+		this.changeLight = true
+		$('body').removeClass('lightson')
+		$('body').addClass('lightsoff')
+
+	},
+	turnLightsOn() {
+		$('body').addClass('lightson')
+		$('.duck').removeClass('duck3')
+		$('body').removeClass('lightsoff')
+	}
 }
 
 
@@ -145,6 +161,17 @@ $('#sleep').on('click', () => {
 })
 
 
+$('form').on('submit', (e) => {
+	e.preventDefault()
+	const $name = $('#name').val()
+	game.name = $('#name').val()
+	$('#pickName').text($name)
+	console.log($name);
+	game.startTimer()
+	$('#name').hide()
+})
+
+console.log(game.lights);
 
 
 
@@ -153,7 +180,6 @@ $('#sleep').on('click', () => {
 
 
 
-game.startTimer()
 
 
 

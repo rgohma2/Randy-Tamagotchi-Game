@@ -155,10 +155,23 @@ ul {
 	animation: sleep 2s linear 0s infinite
 }
 
+.lightsoff {
+  	background: black;
+  	transition-property: opacity;
+  	transition:  2s ease-in;
+}
+
+.lightson {
+	background-image: url('https://images.clipartlogo.com/files/istock/previews/9005/90055005-panorama-of-green-field-with-cloudy-sky-background.jpg');
+  	background-size : cover;
+  	transition-property: opacity;
+  	transition:  2s ease-out;
+}
+
 .dead {
 	position: relative;
 }
-
+			
 
 @keyframes movebody {
     0% {bottom: 350px;right: 280px}
@@ -186,12 +199,29 @@ ul {
 
 
 p {
-	margin: 0 auto;
-	font-size: 50px;
-	border: 1px solid black;
-	padding: 40px;
+	'margin': '0 auto',
+	'font-size': '50px',
+	'border': '1px solid black',
+	'padding': '40px'
 }
 
+input {
+	position: absolute;
+	left: 150px;
+	width: 350px;
+	height: 40px;
+	font-size: 32px;
+}
+
+form p {
+	display: inline-block;
+	position: absolute;
+	left: 770px;
+	top: 100px;
+	width: 200px;
+	height: 32px;
+	font-size: 70px;
+}
 
 
 
