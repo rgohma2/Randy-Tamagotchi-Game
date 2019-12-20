@@ -66,21 +66,22 @@ const game = {
 		if (this.hunger == 10){
 			$('.duck').addClass('dead')
 	    	$('body').append('<p>').css({
-	    	'color' : 'crimson',
+	    	'color' : 'white',
 			'margin': '0 auto',
 			'font-size': '50px',
-			'border': '1px solid black',
+			'background-image': "url('https://rlv.zcache.co.nz/xx_funny_dead_duck_cartoon_iphone_5_5s_case-r78cc401bf6fc4385893419b3e5952460_vx34w_8byvr_307.jpg?rvtype=content')",
 			'padding': '40px',
 			'text-align': 'center'
-			}).text(`${this.name} died of starvation!`)
+			}).text(`${this.name} died of starvation! At ${this.age} years old`)
 	    	this.stopGame()
 	    } else if (this.sleepiness == 10) {
 	    	$('.duck').addClass('dead')
 	    	 $('body').append('<p>').css({
-	    	'color' : 'crimson',
+	    	'color' : 'white',
 			'margin': '0 auto',
 			'font-size': '50px',
 			'border': '1px solid black',
+			'background-image': "url('https://rlv.zcache.co.nz/xx_funny_dead_duck_cartoon_iphone_5_5s_case-r78cc401bf6fc4385893419b3e5952460_vx34w_8byvr_307.jpg?rvtype=content')",
 			'padding': '40px',
 			'text-align': 'center'
 			}).text(`${this.name} got too tired and died!`)
@@ -88,10 +89,10 @@ const game = {
 	    } else if (this.boredom == 10) {
 	    	$('.duck').addClass('dead')
 	    	$('body').append('<p>').css({
-	    	'color' : 'crimson',
+	    	'color' : 'white',
 			'margin': '0 auto',
 			'font-size': '50px',
-			'border': '1px solid black',
+			'background-image': "url('https://rlv.zcache.co.nz/xx_funny_dead_duck_cartoon_iphone_5_5s_case-r78cc401bf6fc4385893419b3e5952460_vx34w_8byvr_307.jpg?rvtype=content')",
 			'padding': '40px',
 			'text-align': 'center'
 			}).text(`${this.name} died of boredom!`)
@@ -172,8 +173,6 @@ $('form').on('submit', (e) => {
 	game.startTimer()
 	$('#name').hide()
 })
-
-console.log(game.lights);
 
 
 
